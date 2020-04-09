@@ -1,0 +1,14 @@
+<h1>{{ object.title }}</h1>
+<p>Description: {{ object.description}}</p>
+<p>Assigned user: {{ object.assigned_user }}</p>
+<p>Done: {{ object.done }}</p>
+<p>Created date: {{ object.created }}</p>
+<p>Updateed date: {{ object.updated }}</p>
+<p>Created by: {{ object.created_by }}</p>
+<p>Updated by: {{ object.updated_by }}</p>
+<p>{{ object.priority }}</p>
+
+<a href="{% url 'todo_list' %}">Back to the list</a>
+<a href="{% url 'logout' %}">Logout</a>
+{{ request.user.email }}
+{{ request.user.first_name }}

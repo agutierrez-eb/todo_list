@@ -1,0 +1,10 @@
+<form method="post">{% csrf_token %}
+	<p>The task you want delete is: "{{ object.title }}"</p>
+	<p>Is assigned to the user: "{{ object.assigned_user }}"</p>
+    <p>The status is: "{{ object.done }}"</p>
+    <input type="submit" value="Confirm">
+</form>
+<a href="{% url 'todo_list' %}">Back to the list</a>
+<a href="{% url 'logout' %}">Logout</a>
+{{ request.user.email }}
+{{ request.user.first_name }}

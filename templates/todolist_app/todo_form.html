@@ -1,0 +1,8 @@
+<form method="post">{% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Save">
+</form>
+<a href="{% url 'logout' %}">Logout</a>
+<a href="{% url 'todo_list' %}">Back to the list</a>
+{{ request.user.email }}
+{{ request.user.first_name }}
