@@ -39,7 +39,7 @@ class TodoCreateView(LoginRequiredMixin, CreateView):
 
 class TodoUpdateView(LoginRequiredMixin, UpdateView):
     model = Todo
-    fields = ['title', 'description', 'done']
+    fields = ['title', 'description', 'done', 'priority']
     success_url = reverse_lazy('todo_list')
 
     def form_valid(self, form):
