@@ -9,18 +9,41 @@ from django.views.generic.edit import (
 from django.urls import reverse_lazy, reverse
 from django.core.exceptions import PermissionDenied
 from pure_pagination.mixins import PaginationMixin
-from .models import Todo
+from .models import Todo, TaskStatus
+
+
+num_pagination = 5
 
 
 class TodoListView(LoginRequiredMixin, PaginationMixin, ListView):
     model = Todo
+    task_status = TaskStatus
 
-    paginate_by = 5
-    # Replace it for your model or use the queryset attribute instead
-    # object = Todo
+    paginate_by = num_pagination
 
     def get_queryset(self):
-        return self.model.objects.filter(assigned_user=self.request.user)
+        my_task_status = self.task_status.objects.get(name='Done')
+        return self.model.objects.filter(
+            assigned_user=self.request.user
+        ).exclude(done=my_task_status)
+
+
+class TodoDoneListView(LoginRequiredMixin, PaginationMixin, ListView):
+    model = Todo
+    task_status = TaskStatus
+
+    paginate_by = num_pagination
+
+    def get_object(self):
+        obj = super().get_object().assigned_user.id
+        if obj != self.request.user.id:
+            raise PermissionDenied
+        else:
+            return super().get_object()
+
+    def get_queryset(self):
+        my_task_status = self.task_status.objects.get(name='Done')
+        return self.model.objects.filter(done=my_task_status)
 
 
 class TodoCreateView(LoginRequiredMixin, CreateView):

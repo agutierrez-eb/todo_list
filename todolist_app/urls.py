@@ -6,6 +6,7 @@ from .views import (
     TodoUpdateView,
     TodoReasignView,
     TodoDetailView,
+    TodoDoneListView,
 )
 from django.contrib.auth import views as auth_views
 
@@ -18,4 +19,5 @@ urlpatterns = [
     path('delete/<pk>', TodoDeleteView.as_view(), name='todo_delete'),
     path('reasign/<pk>', TodoReasignView.as_view(), name='todo_reasign'),
     path('detail/<pk>', TodoDetailView.as_view(), name='todo_detail'),
+    path('donetask', TodoDoneListView.as_view(), name='todo_done'),
 ]
