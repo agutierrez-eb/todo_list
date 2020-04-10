@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Priority, Todo
+from .models import Priority, Todo, TaskStatus
 
 
 class TodoAdmin(admin.ModelAdmin):
@@ -8,3 +8,4 @@ class TodoAdmin(admin.ModelAdmin):
 
 admin.site.register(Todo, TodoAdmin)
 admin.site.register(Priority, TodoAdmin)
+admin.site.register(TaskStatus, TodoAdmin)

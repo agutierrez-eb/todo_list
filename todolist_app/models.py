@@ -8,7 +8,14 @@ class Priority(models.Model):
     order = models.IntegerField()
 
     def __str__(self):
-        return "Priority: {} ({})".format(self.name, self.order)
+        return "{}".format(self.name)
+
+
+class TaskStatus(models.Model):
+    name = models.CharField(max_length=20)
+
+    def __str__(self):
+        return "{}".format(self.name)
 
 
 class Todo(models.Model):
@@ -19,7 +26,7 @@ class Todo(models.Model):
         on_delete=models.CASCADE,
         related_name='assgined'
     )
-    done = models.BooleanField(default=False)
+    done = models.ForeignKey(TaskStatus, on_delete=models.CASCADE)
     created = models.DateField(auto_now=True)
     updated = models.DateField(auto_now=True)
     created_by = models.ForeignKey(
