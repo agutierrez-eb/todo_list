@@ -3,8 +3,6 @@
 {% for todo in object_list %}
     <div>
         <li>{{ todo.title }} - {{ todo.done }} - {{todo.assigned_user}}
-            <a href="{% url 'todo_delete' todo.id %}">Delete</a>
-            <a href="{% url 'todo_detail' todo.id %}">Detail</a>
         </li>
     </div>
 {% endfor %}

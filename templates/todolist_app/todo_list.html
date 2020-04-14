@@ -1,6 +1,13 @@
 
 {% block content %}
 <h1>Todo list</h1>
+<div>
+	<select name="assigned_user" required="" id="id_assigned_user">
+		{% for done_element in object_list %}
+			<option>{{ done_element.done }}</option>
+		{% endfor %}
+	</select>
+</div>
 {% for todo in object_list %}
     <div>
         <li>{{ todo.title }} - {{ todo.done }} - {{todo.assigned_user}}
@@ -11,6 +18,7 @@
         </li>
     </div>
 {% endfor %}
+
 {# The following renders the pagination html #}
 {% include "_pagination.html" %}
 {% endblock %}

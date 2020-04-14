@@ -10,6 +10,7 @@ from django.urls import reverse_lazy, reverse
 from pure_pagination.mixins import PaginationMixin
 from .models import Todo, TaskStatus
 
+# https://github.com/knipknap/django-find 3650
 
 num_pagination = 5
 
@@ -19,15 +20,28 @@ class FilterTodoOwner:
         return Todo.objects.filter(assigned_user=self.request.user)
 
 
+class MyMixin:
+    pass
+
+
 class TodoListView(LoginRequiredMixin, FilterTodoOwner, PaginationMixin, ListView):
     model = Todo
     task_status = TaskStatus
     paginate_by = num_pagination
 
+    # def get_queryset(self):
+    #     return self.model.objects.filter(
+    #         assigned_user=self.request.user
+    #     ).exclude(done__name='Done')
+
+    # def get_context_data(self, **kwargs):
+    #     context = super().get_context_data(**kwargs)
+    #     import ipdb; ipdb.set_trace()
+
     def get_queryset(self):
         return self.model.objects.filter(
             assigned_user=self.request.user
-        ).exclude(done__name='Done')
+        )
 
 
 class TodoDoneListView(LoginRequiredMixin, FilterTodoOwner, PaginationMixin, ListView):
