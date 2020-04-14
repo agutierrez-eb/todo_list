@@ -7,7 +7,7 @@ omit =
     env/*
     */test*
     todolist_app/apps.py
-    todolist_app/manage.py
+    manage.py
     todolist/asgi.py
     todolist/wsgi.py
 
