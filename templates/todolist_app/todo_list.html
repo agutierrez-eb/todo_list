@@ -2,7 +2,7 @@
 {% block content %}
 <h1>Todo list</h1>
 <div>
-	<select name="assigned_user" required="" id="id_assigned_user">
+	<select name="done" required="" id="id_done">
 		{% for done_element in object_list %}
 			<option>{{ done_element.done }}</option>
 		{% endfor %}
