@@ -2,11 +2,15 @@
 {% block content %}
 <h1>Todo list</h1>
 <div>
-	<select name="done" required="" id="id_done">
-		{% for done_element in object_list %}
-			<option>{{ done_element.done }}</option>
-		{% endfor %}
-	</select>
+    <form mehtod="get">
+        {{ form.as_p }}
+        <select name="done" required="" id="id_done">
+            <option value selected> ---------- </option>
+            {% for done_element in task_status %}
+                <option>{{ done_element }}</option>
+            {% endfor %}
+        <input type="submit" value="Save">
+    </form>
 </div>
 {% for todo in object_list %}
     <div>

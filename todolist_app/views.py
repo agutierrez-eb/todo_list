@@ -23,13 +23,29 @@ class TodoListView(LoginRequiredMixin, FilterTodoOwner, PaginationMixin, ListVie
     model = Todo
     task_status = TaskStatus
     paginate_by = num_pagination
-    # done = ???
 
     def get_queryset(self):
-        return self.model.objects.filter(
-            assigned_user=self.request.user,
-            # done=self.status
-        )
+        done = self.request.GET.get('done')
+
+        if done is None or done == 'All':
+            return self.model.objects.filter(
+                assigned_user=self.request.user,
+            )
+        else:
+            status = self.task_status.objects.get(name=done)
+            return self.model.objects.filter(
+                assigned_user=self.request.user,
+                done=status
+            )
+
+    def get_context_data(self, **kwargs):
+        statuses = ['All']
+        done = self.task_status.objects.all()
+        for element in done:
+            statuses.append(element.name)
+        context = super().get_context_data(**kwargs)
+        context['task_status'] = statuses
+        return context
 
 
 class TodoDoneListView(LoginRequiredMixin, FilterTodoOwner, PaginationMixin, ListView):
@@ -81,4 +97,4 @@ class TodoReasignView(LoginRequiredMixin, FilterTodoOwner, UpdateView):
 
 
 class TodoDetailView(LoginRequiredMixin, FilterTodoOwner, DetailView):
-    model = Todo
+    pass
