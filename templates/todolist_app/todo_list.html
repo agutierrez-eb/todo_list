@@ -1,33 +1,42 @@
-
-{% block content %}
-<h1>Todo list</h1>
-<div>
-    <form mehtod="get">
-        {{ form.as_p }}
-        <label>Search by status: </label>
-        <select name="done" required="" id="id_done">
-            <option value selected> ---------- </option>
-            {% for done_element in task_status %}
-                <option>{{ done_element }}</option>
+<html>
+    <head>
+        <title>Todo list</title>
+    </head>
+    <body>
+        {% block content %}
+        <h1>Todo list</h1>
+        <div>
+            <form mehtod="get">
+                {{ form.as_p }}
+                <label>Search by status: </label>
+                <select name="done" required="" id="id_done">
+                    <option value selected> ---------- </option>
+                    {% for done_element in task_status %}
+                        <option>{{ done_element }}</option>
+                    {% endfor %}
+                    <input type="submit" value="Search">
+                </select>
+            </form>
+        </div>
+        <div>
+            {% for todo in object_list %}
+            <li>{{ todo.title }} - {{ todo.done }} - {{todo.assigned_user}}
+                <a href="{% url 'todo_update' todo.id %}">Update</a>
+                <a href="{% url 'todo_delete' todo.id %}">Delete</a>
+                <a href="{% url 'todo_reasign' todo.id %}">Reasign</a>
+                <a href="{% url 'todo_detail' todo.id %}">Detail</a>
+            </li>
             {% endfor %}
-        <input type="submit" value="Search">
-    </form>
-</div>
-{% for todo in object_list %}
-    <div>
-        <li>{{ todo.title }} - {{ todo.done }} - {{todo.assigned_user}}
-            <a href="{% url 'todo_update' todo.id %}">Update</a>
-            <a href="{% url 'todo_delete' todo.id %}">Delete</a>
-            <a href="{% url 'todo_reasign' todo.id %}">Reasign</a>
-            <a href="{% url 'todo_detail' todo.id %}">Detail</a>
-        </li>
-    </div>
-{% endfor %}
-{# The following renders the pagination html #}
-{% include "_pagination.html" %}
-{% endblock %}
-<a href="{% url 'todo_create' %}">Create</a>
-<a href="{% url 'todo_done' %}">Go to done tasks</a>
-<a href="{% url 'logout' %}">Logout</a>
-{{ request.user.email }}
-{{ request.user.first_name }}
+            {# The following renders the pagination html #}
+            {% include "_pagination.html" %}
+            {% endblock %}
+        </div>
+        <div>
+            <a href="{% url 'todo_create' %}">Create</a>
+            <a href="{% url 'todo_done' %}">Go to done tasks</a>
+            <a href="{% url 'logout' %}">Logout</a>
+            {{ request.user.email }}
+            {{ request.user.first_name }}
+        </div>
+    </body>
+</html>

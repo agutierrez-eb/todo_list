@@ -1,15 +1,26 @@
-{% block content %}
-<h1>Todo list</h1>
-{% for todo in object_list %}
-    <div>
-        <li>{{ todo.title }} - {{ todo.done }} - {{todo.assigned_user}}
-        </li>
-    </div>
-{% endfor %}
-{# The following renders the pagination html #}
-{% include "_pagination.html" %}
-{% endblock %}
-<a href="{% url 'todo_list' %}">Back to the list</a>
-<a href="{% url 'logout' %}">Logout</a>
-{{ request.user.email }}
-{{ request.user.first_name }}
+<html>
+	<head>
+		<title>Done todo</title>
+	</head>
+	<body>
+		<div>
+			{% block content %}
+			<h1>Todo list</h1>
+			{% for todo in object_list %}
+    			<div>
+        			<li>{{ todo.title }} - {{ todo.done }} - {{todo.assigned_user}}
+        			</li>
+    			</div>
+			{% endfor %}
+			{# The following renders the pagination html #}
+			{% include "_pagination.html" %}
+			{% endblock %}
+		</div>
+		<div>
+			<a href="{% url 'todo_list' %}">Back to the list</a>
+			<a href="{% url 'logout' %}">Logout</a>
+			{{ request.user.email }}
+			{{ request.user.first_name }}
+		</div>
+	</body>
+</html>
