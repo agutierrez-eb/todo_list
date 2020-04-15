@@ -4,6 +4,7 @@
 <div>
     <form mehtod="get">
         {{ form.as_p }}
+        <label>Search by status: </label>
         <select name="done" required="" id="id_done">
             <option value selected> ---------- </option>
             {% for done_element in task_status %}
@@ -22,7 +23,6 @@
         </li>
     </div>
 {% endfor %}
-
 {# The following renders the pagination html #}
 {% include "_pagination.html" %}
 {% endblock %}
