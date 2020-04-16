@@ -1,43 +1,59 @@
 <html>
     <head>
         <title>Todo list</title>
+        {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'todolist/style.css' %}">
+        <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet">
     </head>
     <body>
         {% block content %}
-        <!-- {% load static %} -->
-        <h1>Todo list</h1>
-        <div>
-            <form mehtod="get">
+        <div class="head_todolist">
+            <div class="head_logout">
+                <a>[{{ request.user.username }}]</a>
+                <a href="{% url 'logout' %}">Logout</a>
+            </div>
+        </div>
+        <div class="task_sheet">
+            <div class="task_title">
+                <a>Todo list</a>
+            </div>
+            <div class="button_bar_in_sheet">
+                <button class="btn_sheet" onclick="window.location.href = '{% url 'todo_create' %}';">Create</button>
+                <button class="btn_sheet" onclick="window.location.href = '{% url 'todo_done' %}';">Go to done tasks</button>
+            </div>
+            <form mehtod="get" class="search_form">
                 {{ form.as_p }}
-                <label>Search by status: </label>
-                <select name="done" required="" id="id_done">
+                <label id="label_search">Search by status</label>
+                <select class="select_search" name="done" required="" id="id_done">
                     <option value selected> ---------- </option>
                     {% for done_element in task_status %}
                         <option>{{ done_element }}</option>
                     {% endfor %}
-                    <input type="submit" value="Search">
+                    <input class="btn_sheet" type="submit" value="Search">
                 </select>
             </form>
+            <div class="task_list">
+                    {% for todo in object_list %}
+                    <div class="task">
+                        <div class="task_name">
+                            <a> {{ todo.title }} </a>
+                        </div>
+                        <div class="task_detail">
+                            <a> {{ todo.done }} - {{ todo.priority }}</a>
+                        </div>
+                        <button class="btn_sheet" onclick="window.location.href='{% url 'todo_update' todo.id %}';">Update</button>
+                        <button class="btn_delete" onclick="window.location.href='{% url 'todo_delete' todo.id %}';">Delete</button>
+                        <button class="btn_sheet" onclick="window.location.href='{% url 'todo_reasign' todo.id %}';">Reassign</button>
+                        <button class="btn_sheet" onclick="window.location.href='{% url 'todo_detail' todo.id %}';">Detail</button>
+                    </div>
+                    {% endfor %}
+                <div class="pagination">
+                    {# The following renders the pagination html #}
+                    {% include "_pagination.html" %}
+                </div>
+            </div>
         </div>
-        <div>
-            {% for todo in object_list %}
-            <li>{{ todo.title }} - {{ todo.done }} - {{todo.assigned_user}}
-                <a href="{% url 'todo_update' todo.id %}">Update</a>
-                <a href="{% url 'todo_delete' todo.id %}">Delete</a>
-                <a href="{% url 'todo_reasign' todo.id %}">Reasign</a>
-                <a href="{% url 'todo_detail' todo.id %}">Detail</a>
-            </li>
-            {% endfor %}
-            {# The following renders the pagination html #}
-            {% include "_pagination.html" %}
-            {% endblock %}
-        </div>
-        <div>
-            <a href="{% url 'todo_create' %}">Create</a>
-            <a href="{% url 'todo_done' %}">Go to done tasks</a>
-            <a href="{% url 'logout' %}">Logout</a>
-            {{ request.user.email }}
-            {{ request.user.first_name }}
-        </div>
+        {% endblock %}
+        <small id="sign">Developed by Rulo!</small>
     </body>
 </html>
