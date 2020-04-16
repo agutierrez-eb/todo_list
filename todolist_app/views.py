@@ -11,7 +11,7 @@ from pure_pagination.mixins import PaginationMixin
 from .models import Todo, TaskStatus
 
 
-num_pagination = 5
+num_pagination = 10
 
 
 class FilterTodoOwner:

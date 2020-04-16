@@ -1,38 +1,115 @@
 *{
-  font-family: 'Questrial', sans-serif;
+	font-family: 'Questrial', sans-serif;
 }
 body {
-  background-color: #D8D8D8
+	background-color: #D8D8D8
 }
 .login {
-  margin-top:10%;
-  margin-left: 35%;
-  width: 30%;
-  border: 3px solid gray;
-  padding: 10px;
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-  border-radius: 12px;
-  background-color: #F9F9F9;
+	margin-top:10%;
+  	margin-left: 35%;
+  	width: 30%;
+  	border: 3px solid gray;
+  	padding: 10px;
+ 	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  	border-radius: 12px;
+  	background-color: #F9F9F9;
 }
 #id_username, #id_password {
-  width: 100%;
-  padding: 12px 20px;
-  margin: 6px 0;
-  box-sizing: border-box;
-  border-radius: 4px;
-  font-size: 15px;
+  	width: 100%;
+  	padding: 12px 20px;
+  	margin: 6px 0;
+  	box-sizing: border-box;
+  	border-radius: 4px;
+  	font-size: 15px;
 }
-.login_title, .login_form{
-  text-align: center;
+.login_title, .login_form, .todolist_title{
+  	text-align: center;
 }
 .btn_submit{
-  background-color: #808080;
-  font-size: 16px;
-  border-radius: 12px;
-  padding: 12px 28px;
-  color: white;
+  	background-color: #808080;
+  	font-size: 16px;
+  	border-radius: 12px;
+  	padding: 12px 28px;
+  	color: white;
 }
 .btn_submit:hover {
-  background-color: #4CAF50;
-  color: white;
+  	background-color: #388AFF;
+  	color: white;
+}
+.head_logout{
+	text-align: right;
+	float: right;
+}
+.head_title{
+	margin-left: 40%;
+	font-size: 50px;
+}
+.task_title{
+  	font-size: 35px;
+  	padding: 10px;
+}
+.btn_sheet, .btn_delete{
+  	background-color: #808080;
+  	font-size: 15px;
+  	border-radius: 8px;
+  	color: white;
+  	padding: 5px;
+}
+.btn_sheet:hover{
+  	background-color: #388AFF;
+  	color: white;
+}
+.btn_delete:hover{
+	background-color: #FF0000;
+	color: white;
+}
+.search_form{
+  	padding: 10px;
+  	border-bottom: 1px solid gray;
+}
+.task_sheet{
+  	background-color: #F9F9F9;
+  	width: 60%;
+  	border: 3px solid gray;
+  	padding: 10px;
+  	text-align: center;
+  	border-radius: 8px;
+  	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  	margin: auto;
+}
+.select_search{
+  	width: 20%;
+  	margin: 0px 10px 0px 0px;
+  	border-radius: 4px;
+  	font-size: 15px;
+}
+/*.task_list{
+
+}*/
+.task{
+  	border-bottom: 1px solid gray;
+  	padding-bottom: 10px;
+}
+.task_name{
+   	font-size: 30px;
+   	padding-top: 10px;
+}
+.task_detail{
+   	padding: 10px;
+}
+.pagination{
+   	padding: 25px;
+}
+.next, .prev{
+	border: 1px solid gray;
+	border-radius: 6px;
+	padding: 2px;
+	background-color: #808080;
+	color: white;
+}
+.current_page, .page{
+	border: 1px solid gray;
+	border-radius: 6px;
+	padding: 4px;
+	color: black;
 }
