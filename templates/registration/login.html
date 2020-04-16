@@ -4,17 +4,22 @@
 		<title>Login todo</title>
 		{% load static %}
         <link rel="stylesheet" type="text/css" href="{% static 'todolist/style.css' %}">
+        <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet">
 	</head>
 	<body>
-		<div>
-			<h1 class="title">Login</h1>
-			{% block content %}
-  			<form method="post">
-    			{% csrf_token %}
-    			{{ form.as_p }}
-   				<button type="submit" class="btn btn-primary">Login</button>
-  			</form>
-			{% endblock %}
+		<div class="login">
+			<div class="login_title">
+				<h1>Login</h1>
+			</div>
+			<div class="login_form">
+				{% block content %}
+  				<form method="post">
+    				{% csrf_token %}
+    				{{ form.as_p }}
+   					<button type="submit" class="btn_submit">Login</button>
+  				</form>
+				{% endblock %}
+			</div>
 		</div>
 	</body>
 </html>
