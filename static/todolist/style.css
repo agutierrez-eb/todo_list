@@ -1,3 +1,38 @@
-h1 {
-  color: blue;
+*{
+  font-family: 'Questrial', sans-serif;
+}
+body {
+  background-color: #D8D8D8
+}
+.login {
+  margin-top:10%;
+  margin-left: 35%;
+  width: 30%;
+  border: 3px solid gray;
+  padding: 10px;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  border-radius: 12px;
+  background-color: #F9F9F9;
+}
+#id_username, #id_password {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 6px 0;
+  box-sizing: border-box;
+  border-radius: 4px;
+  font-size: 15px;
+}
+.login_title, .login_form{
+  text-align: center;
+}
+.btn_submit{
+  background-color: #808080;
+  font-size: 16px;
+  border-radius: 12px;
+  padding: 12px 28px;
+  color: white;
+}
+.btn_submit:hover {
+  background-color: #4CAF50;
+  color: white;
 }
