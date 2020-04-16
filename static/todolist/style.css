@@ -44,7 +44,7 @@ body {
 	margin-left: 40%;
 	font-size: 50px;
 }
-.task_title{
+.action_title{
   	font-size: 35px;
   	padding: 10px;
 }
@@ -112,4 +112,21 @@ body {
 	border-radius: 6px;
 	padding: 4px;
 	color: black;
+}
+.todo_form{
+    width: 100%;
+}
+
+#id_title, #id_description, #id_assigned_user, #id_done, #id_priority{
+    width: 30%;
+    margin: 6px;
+    border-radius: 4px;
+    font-size: 15px
+}
+.btn_cancel{
+    background-color: #FF0000;
+    font-size: 15px;
+    border-radius: 8px;
+    color: white;
+    padding: 5px;
 }

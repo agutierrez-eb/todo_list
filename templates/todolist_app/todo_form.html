@@ -1,19 +1,29 @@
 <html>
 	<head>
 		<title>Create todo</title>
+		{% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'todolist/style.css' %}">
+        <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet">
 	</head>
 	<body>
-		<div>
-			<form method="post">{% csrf_token %}
-    			{{ form.as_p }}
-    			<input type="submit" value="Save">
-			</form>
-		</div>
-		<div>
+		<div class="head_logout">
+			<a> {{ request.user.username }} </a>
 			<a href="{% url 'logout' %}">Logout</a>
-			<a href="{% url 'todo_list' %}">Back to the list</a>
-			{{ request.user.email }}
-			{{ request.user.first_name }}
+		</div>
+		<div class="task_sheet">
+			<div class="action_title">
+				<a>Todo list</a>
+			</div>
+			<div>
+				<form method="post">
+					{% csrf_token %}
+    				{{ form.as_p }}
+    				<div class="create_button">
+    					<button class="btn_cancel" onclick="window.location.href = '{% url 'todo_list' %}';">Cancel</button>
+    					<input class="btn_sheet" type="submit" value="Save">
+    				</div>
+				</form>
+			</div>
 		</div>
 	</body>
 </html>
