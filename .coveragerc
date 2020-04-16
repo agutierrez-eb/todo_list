@@ -10,6 +10,7 @@ omit =
     manage.py
     todolist/asgi.py
     todolist/wsgi.py
+    static/todolist/style.css
 
 
 [report]
