@@ -7,7 +7,7 @@
 	</head>
 	<body>
 		<div class="head_logout">
-			{{ request.user.username }}
+			<a>[{{ request.user.username }}]</a>
 			<a href="{% url 'logout' %}">Logout</a>
 		</div>
 		<div class="task_sheet">
