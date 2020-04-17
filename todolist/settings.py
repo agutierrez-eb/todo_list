@@ -25,7 +25,7 @@ SECRET_KEY = 'r(@8bnc_-b*xqa66n5)2e=(l=^bn)uu)*er90ipwt08z(504__'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['test server', "127.0.0.1", "todolist-agutierrez"]
 
 
 # Application definition
