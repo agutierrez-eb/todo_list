@@ -1,10 +1,19 @@
 <html>
 	<head>
 		<title>Todo detail</title>
+		{% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'todolist/style.css' %}">
+        <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet">
 	</head>
 	<body>
-		<div>
-			<h1>{{ object.title }}</h1>
+		<div class="head_logout">
+            <a>[{{ request.user.username }}]</a>
+            <a href="{% url 'logout' %}">Logout</a>
+        </div>
+		<div class="task_sheet">
+			<div class="action_title">
+				<a>{{ object.title }}</a>
+			</div>
 			<p>Description: {{ object.description}}</p>
 			<p>Assigned user: {{ object.assigned_user }}</p>
 			<p>Task status: {{ object.done }}</p>
@@ -12,13 +21,10 @@
 			<p>Updateed date: {{ object.updated }}</p>
 			<p>Created by: {{ object.created_by }}</p>
 			<p>Updated by: {{ object.updated_by }}</p>
-			<p>{{ object.priority }}</p>
-		</div>
-		<div>
-			<a href="{% url 'todo_list' %}">Back to the list</a>
-			<a href="{% url 'logout' %}">Logout</a>
-			{{ request.user.email }}
-			{{ request.user.first_name }}
+			<p>Priority: {{ object.priority }}</p>
+			<div>
+				<button class="btn_delete" onclick="window.location.href = '{% url 'todo_list' %}';">Back to the list</button>
+			</div>
 		</div>
 	</body>
 </html>
