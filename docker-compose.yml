@@ -25,6 +25,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.dev
+    depends_on:
+      - todolist_app
     volumes:
       - .:/usr/app
     command: ["python", "manage.py", "test"]

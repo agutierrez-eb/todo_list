@@ -1,13 +1,21 @@
-language: python
-python:
-  - "3.7.4"
-cache: pip
+# language: python
+# python:
+#   - "3.7.4"
+# cache: pip
 
-# command to install dependencies
-install:
-  - pip install -r requirements.txt
-# command to run tests
+# # command to install dependencies
+# install:
+#   - pip install -r requirements.txt
+# # command to run tests
+# script:
+#   - coverage run --source='.' ./manage.py test
+# after_success:
+#   - coveralls
+
+sudo: required
+services:
+  - docker-compose
+before_install:
+  - docker-compose up --build
 script:
-  - coverage run --source='.' ./manage.py test
-after_success:
-  - coveralls
+  - docker-compose up test
