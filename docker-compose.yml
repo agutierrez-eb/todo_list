@@ -1,0 +1,30 @@
+version: '3'
+services:
+  db:
+    image: 'mysql:5.7.29'
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'todolist_db'
+      MYSQL_ROOT_PASSWORD: 'root'
+      MYSQL_USER: 'root'
+      MYSQL_PASSWORD: 'root'
+    ports:
+      - "3307:3307"
+  todolist_app:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    command: ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    volumes:
+      - .:/usr/app
+  test:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    volumes:
+      - .:/usr/app
+    command: ["python", "manage.py", "test"]
