@@ -15,8 +15,8 @@
 sudo: required
 services:
   - docker-compose
-# before_install:
-#   - docker-compose up db
+before_install:
+  - docker-compose up -d db
 #   - docker-compose up todolist_app
 script:
   - docker-compose up test
