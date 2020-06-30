@@ -47,7 +47,7 @@ class CreateTodo(TestCase):
         }
         response = self.client.post("/create/", data)
         self.assertRedirects(response, "/")
-        self.assertEqual(response.status_code, 302)
+        self.assertEqual(response.status_code, 9999999)
         self.assertEqual(Todo.objects.filter(assigned_user=self.user).count(), 1)
 
     def test_create_todo_fails(self):
