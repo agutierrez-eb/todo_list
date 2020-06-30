@@ -18,5 +18,5 @@ services:
 before_install:
   - docker-compose build
 #   - docker-compose up todolist_app
-# script:
+script:
   - docker-compose up test
