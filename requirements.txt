@@ -4,7 +4,7 @@ certifi==2019.11.28
 chardet==3.0.4
 coverage==4.5.4
 distlib==0.3.0
-Django==3.0.7
+Django==3.0.14
 django-el-pagination==3.3.0
 django-pure-pagination==0.3.0
 django-search-views==0.3.7
